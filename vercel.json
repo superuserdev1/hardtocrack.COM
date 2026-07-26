@@ -1,0 +1,8 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/informe", "destination": "/hardtocrack-informe-grapheneos.html" },
+    { "source": "/blog", "destination": "/blog.html" }
+  ]
+}
