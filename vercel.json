@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/informe", "destination": "/hardtocrack-informe-grapheneos.html" },
-    { "source": "/blog", "destination": "/blog.html" }
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/secure", "destination": "/secure.html" }
   ]
 }
