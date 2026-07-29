@@ -1,38 +1,492 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificación oficial de canales — HardToCrack</title>
+<meta name="description" content="Página oficial única de verificación de los canales de contacto y direcciones de pago del ecosistema HardToCrack. Verifica aquí antes de confiar en cualquier otro canal.">
+<meta name="robots" content="noindex, nofollow">
 
-<title>HardToCrack | Secure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+  
+-->
 
 <style>
+  :root {
+    --bg: #05070a;
+    --bg2: #0b0e14;
+    --bg3: #0f131a;
+    --surface: #121824;
+    --surface2: #182232;
+    --border: #1b2637;
+    --border2: #24354f;
+    --accent: #00e5ff;
+    --accent2: #00b0ff;
+    --accent3: #00ff9d;
+    --warn: #ff7643;
+    --text: #f0f5fa;
+    --text2: #a3b8cc;
+    --text3: #5c7f99;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-body{
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
 
-background:#0B1018;
-color:white;
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-font-family:Inter,Arial,sans-serif;
+  a { color: var(--accent); text-decoration: none; }
 
-display:flex;
-justify-content:center;
-align-items:center;
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 70px 5% 100px;
+  }
 
-min-height:100vh;
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text3);
+    margin-bottom: 40px;
+  }
+  .back:hover { color: var(--accent); }
 
-text-align:center;
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent3);
+    border: 1px solid rgba(0,255,157,0.3);
+    background: rgba(0,255,157,0.06);
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+    margin-bottom: 24px;
+  }
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent3);
+    box-shadow: 0 0 8px var(--accent3);
+  }
 
-}
+  h1 {
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  h1 span { color: var(--accent); }
 
-.container{
+  .lede {
+    color: var(--text2);
+    font-size: 1.02rem;
+    max-width: 60ch;
+    margin-bottom: 10px;
+  }
 
-max-width:700px;
-padding:40px;
-[...]
+  .domain-line {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent3);
+    margin-bottom: 36px;
+  }
+
+  .warn-box {
+    display: flex;
+    gap: 14px;
+    background: rgba(255,118,67,0.06);
+    border: 1px solid rgba(255,118,67,0.28);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-bottom: 56px;
+  }
+  .warn-box .ico { font-size: 1.3rem; line-height: 1; }
+  .warn-box p { color: var(--text2); font-size: 0.92rem; }
+  .warn-box strong { color: var(--warn); }
+
+  section { margin-bottom: 56px; }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sec-head .tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+  .sec-head h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 170px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .row .label {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .row .val {
+    font-family: var(--mono);
+    font-size: 0.86rem;
+    color: var(--text);
+    word-break: break-all;
+  }
+  .row .val a { color: var(--accent); }
+
+  [data-placeholder="true"] {
+    color: var(--warn) !important;
+    background: repeating-linear-gradient(
+      -45deg, rgba(255,118,67,0.10), rgba(255,118,67,0.10) 6px,
+      rgba(255,118,67,0.03) 6px, rgba(255,118,67,0.03) 12px
+    );
+    border: 1px dashed rgba(255,118,67,0.45);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  .copy-btn {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text2);
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 7px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+  .copy-btn:hover { border-color: var(--accent2); color: var(--accent); }
+  .copy-btn.copied { color: var(--accent3); border-color: var(--accent3); }
+
+  /* Fingerprint block — signature element */
+  .fp-block {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 26px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fp-block::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -20%;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(0,229,255,0.10), transparent 70%);
+    pointer-events: none;
+  }
+  .fp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .fp-email {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+  .fp-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 8px;
+  }
+  .fp-hash {
+    font-family: var(--mono);
+    font-size: 0.98rem;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    line-height: 1.9;
+    word-break: break-all;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+  .fp-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    color: var(--bg);
+  }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--text2);
+  }
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--accent); }
+
+  .net-chip {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .net-erc20 { background: rgba(98,126,234,0.15); color: #8ea3ff; border: 1px solid rgba(98,126,234,0.35); }
+  .net-trc20 { background: rgba(255,7,58,0.12); color: #ff7d95; border: 1px solid rgba(255,7,58,0.3); }
+  .net-base { background: rgba(0,82,255,0.15); color: #6f9bff; border: 1px solid rgba(0,82,255,0.35); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 26px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text3);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .row .label { order: 1; }
+    .row .val { order: 2; }
+    .copy-btn { order: 3; width: 100%; text-align: center; }
+    .fp-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/">← volver a hardtocrack.com</a>
+
+  <span class="badge">Página oficial de verificación</span>
+
+  <h1>Canales oficiales de <span>HardToCrack</span></h1>
+  <p class="lede">
+    Esta es la <strong>única página oficial</strong> donde se publican y verifican todos los métodos
+    de contacto y las direcciones de pago del ecosistema HardToCrack. Cualquier perfil, chat o
+    dirección que no coincida exactamente con lo listado aquí no es oficial.
+  </p>
+  <div class="domain-line">hardtocrack.com/secure</div>
+
+  <div class="warn-box">
+    <span class="ico">⚠️</span>
+    <p>
+      <strong>Verificá siempre desde este dominio.</strong> No confirmamos identidad ni operamos
+      a través de ningún canal que no esté listado en esta página. Ante la duda, comparalo letra
+      por letra — en particular el fingerprint PGP y las direcciones de wallet.
+    </p>
+  </div>
+
+  <!-- ── CANALES DE CONTACTO ─────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <span class="tag">01</span>
+      <h2>Canales de contacto</h2>
+    </div>
+
+    <div class="row">
+      <span class="label">🆔 Session ID</span>
+      <span class="val" data-placeholder="true" id="v-session">COMPLETAR_SESSION_ID</span>
+      <button class="copy-btn" data-copy="v-session">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">🔗 SimpleX</span>
+      <span class="val" data-placeholder="true" id="v-simplex">https://simplex.chat/contact#/COMPLETAR</span>
+      <button class="copy-btn" data-copy="v-simplex">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">🔒 Signal</span>
+      <span class="val" data-placeholder="true" id="v-signal">signal.me/#p/+COMPLETAR</span>
+      <button class="copy-btn" data-copy="v-signal">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">✈️ Telegram</span>
+      <span class="val" data-placeholder="true" id="v-telegram">t.me/COMPLETAR</span>
+      <button class="copy-btn" data-copy="v-telegram">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">✉️ Email</span>
+      <span class="val" data-placeholder="true" id="v-email">contacto@hardtocrack.com</span>
+      <button class="copy-btn" data-copy="v-email">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">☎️ Empresas</span>
+      <span class="val" data-placeholder="true" id="v-phone">+34 COMPLETAR</span>
+      <button class="copy-btn" data-copy="v-phone">Copiar</button>
+    </div>
+  </section>
+
+  <!-- ── PGP ──────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <span class="tag">02</span>
+      <h2>Verificación PGP</h2>
+    </div>
+
+    <div class="fp-block">
+      <div class="fp-row">
+        <span class="fp-email">pgp@hardtocrack.com</span>
+      </div>
+      <div class="fp-label">Fingerprint</div>
+      <div class="fp-hash" data-placeholder="true" id="v-fingerprint">XXXX XXXX XXXX XXXX XXXX&nbsp; XXXX XXXX XXXX XXXX XXXX</div>
+      <div class="fp-actions">
+        <button class="copy-btn" data-copy="v-fingerprint">Copiar fingerprint</button>
+        <a class="btn btn-primary" href="/pgp-hardtocrack.asc" download>⬇ Descargar clave pública (.asc)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WALLETS ──────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <span class="tag">03</span>
+      <h2>Direcciones oficiales de pago</h2>
+    </div>
+
+    <div class="row">
+      <span class="label">Ⓧ Monero (XMR)</span>
+      <span class="val" data-placeholder="true" id="v-xmr">COMPLETAR_DIRECCION_XMR</span>
+      <button class="copy-btn" data-copy="v-xmr">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">₿ Bitcoin (BTC)</span>
+      <span class="val" data-placeholder="true" id="v-btc">COMPLETAR_DIRECCION_BTC</span>
+      <button class="copy-btn" data-copy="v-btc">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">Ξ Ethereum (ETH)</span>
+      <span class="val" data-placeholder="true" id="v-eth">COMPLETAR_DIRECCION_ETH<span class="net-chip net-erc20">ERC-20</span></span>
+      <button class="copy-btn" data-copy="v-eth">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">◎ USDC</span>
+      <span class="val" data-placeholder="true" id="v-usdc">COMPLETAR_DIRECCION_USDC<span class="net-chip net-erc20">ERC-20</span><span class="net-chip net-base">BASE</span></span>
+      <button class="copy-btn" data-copy="v-usdc">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">₮ USDT</span>
+      <span class="val" data-placeholder="true" id="v-usdt-erc">COMPLETAR_DIRECCION_USDT_ERC20<span class="net-chip net-erc20">ERC-20</span></span>
+      <button class="copy-btn" data-copy="v-usdt-erc">Copiar</button>
+    </div>
+
+    <div class="row">
+      <span class="label">₮ USDT</span>
+      <span class="val" data-placeholder="true" id="v-usdt-trc">COMPLETAR_DIRECCION_USDT_TRC20<span class="net-chip net-trc20">TRC-20</span></span>
+      <button class="copy-btn" data-copy="v-usdt-trc">Copiar</button>
+    </div>
+  </section>
+
+  <footer>
+    <span>Última actualización: <span data-placeholder="true">COMPLETAR_FECHA</span></span>
+    <span>hardtocrack.com/secure</span>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-copy');
+      const el = document.getElementById(targetId);
+      const text = el.innerText.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = '✓ Copiado';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>
