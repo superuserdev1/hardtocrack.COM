@@ -1,16 +1,15 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
     {
       "source": "/guia",
       "destination": "/guia/index.html"
-    }
-  ],
-  "redirects": [
+    },
     {
-      "source": "/partners",
-      "destination": "https://partners.hardtocrack.com/",
-      "permanent": true
+      "source": "/guia/",
+      "destination": "/guia/index.html"
     }
   ]
 }
